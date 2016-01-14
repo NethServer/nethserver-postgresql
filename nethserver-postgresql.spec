@@ -26,7 +26,6 @@ perl createlinks
 rm -rf %{buildroot}
 (cd root; find . -depth -print | cpio -dump %{buildroot})
 %{genfilelist} %{buildroot} > %{name}-%{version}-filelist
-echo "%doc COPYING" >> %{name}-%{version}-filelist
 
 %post
 
@@ -34,6 +33,7 @@ echo "%doc COPYING" >> %{name}-%{version}-filelist
 
 %files -f %{name}-%{version}-filelist
 %defattr(-,root,root)
+%doc COPYING
 %dir %{_nseventsdir}/%{name}-update
 
 %changelog
